@@ -9,18 +9,23 @@ public class Solution {
     static int inversionCount(int n, int m, int[] a) {
         // Complete this function
         int b[]=new int[m];
+        int c[]=new int[m];
         int invCount=0;
         for(int i=0;i<=(n-m);i++){
             for(int j=0;j<m;j++){
                 b[j]=a[i+j];
+                c[j]=b[j];
             }
-            for(int j=0;j<(m-1);j++){
-                for(int k=j+1;k<m;k++){
-                    if(b[j]>b[k]){
-                        invCount++;
+            Arrays.sort(c);
+            if(!(Arrays.equals(b,c))){
+                for(int j=0;j<(m-1);j++){
+                    for(int k=j+1;k<m;k++){
+                        if(b[j]>b[k]){
+                            invCount++;
+                        }
                     }
                 }
-            }
+           }   
         }
         return invCount;
     }
